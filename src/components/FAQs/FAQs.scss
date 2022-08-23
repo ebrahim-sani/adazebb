@@ -1,0 +1,43 @@
+.app__faqs-component {
+  padding: 0.1rem 25rem 2rem 20rem;
+
+  @media screen and (max-width: 930px) {
+    padding: 0.1rem 18rem 2rem 16rem;
+  }
+  @media screen and (max-width: 760px) {
+    padding: 0;
+  }
+}
+.app__faqs-head {
+  padding: 6rem 25rem 0rem 20rem;
+
+  h2 {
+    margin: 10px 10px 0;
+    padding: 14px 14px 0;
+  }
+
+  @media screen and (max-width: 930px) {
+    padding: 5rem 18rem 0rem 16rem;
+  }
+  @media screen and (max-width: 760px) {
+    padding: 6rem 0 0;
+  }
+}
+.app__faqs-con {
+  margin: 10px;
+  padding: 14px;
+
+  h3 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
+  h2,
+  h4 {
+    margin-bottom: 10px;
+  }
+}

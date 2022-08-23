@@ -1,0 +1,207 @@
+.app__navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 6rem;
+  box-shadow: 0 8px 32px 0 rgba(228, 228, 233, 0.37);
+  position: fixed;
+  background: #fff;
+  z-index: 1;
+
+  @media screen and (max-width: 900px) {
+    padding: 1rem 4rem;
+  }
+  @media screen and (max-width: 500px) {
+    padding: 1rem 1rem;
+  }
+  @media screen and (max-width: 400px) {
+    padding: 1rem 1rem;
+  }
+  @media screen and (min-width: 2000px) {
+    padding: 1.5rem 6rem;
+  }
+}
+
+.app__navbar-logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  img {
+    width: 100px;
+    height: 66px;
+
+    @media screen and (min-width: 2000px) {
+      width: 180px;
+      height: 75px;
+    }
+  }
+}
+
+.app__navbar-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+
+  button {
+    padding: 9px 28px;
+    background: var(--secondary-color);
+    color: var(--white-color);
+    font-weight: 600;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  .bag_icon {
+    margin-left: 1em;
+    padding: 8px;
+    position: relative;
+    cursor: pointer;
+
+    span {
+      position: absolute;
+      right: 2px;
+      top: 2px;
+      padding: 2px 6px;
+      background: var(--secondary-color);
+      border-radius: 50%;
+      font-size: 14px;
+      font-weight: 600;
+      color: #f4f4f4;
+    }
+
+    svg {
+      height: 26px;
+      width: 26px;
+      color: var(--secondary-color);
+    }
+  }
+
+  li {
+    margin: 0 1rem;
+    cursor: pointer;
+    flex-direction: column;
+
+    a {
+      color: var(--gray-color);
+      text-decoration: none;
+      flex-direction: column;
+      text-transform: uppercase;
+      font-weight: 500;
+
+      &:hover {
+        color: var(--secondary-color);
+      }
+
+      &:hover {
+        div {
+          background-color: var(--secondary-color);
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+}
+
+.app__navbar-menu {
+  display: flex;
+  position: relative;
+
+  svg {
+    width: 35px;
+    height: 35px;
+    color: var(--secondary-color);
+    margin: 0.5rem 1rem;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -0.5rem;
+    float: right;
+    padding: 12px;
+    width: 80vw;
+    height: 100vh;
+    background-color: var(--white-color);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+    button {
+      padding: 9px 28px;
+      background: var(--secondary-color);
+      color: var(--white-color);
+      font-weight: 600;
+      margin-top: 10px;
+      border: none;
+      outline: none;
+      border-radius: 6px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    @media screen and (min-width: 900px) {
+      display: none;
+    }
+  }
+
+  li {
+    margin: 1rem;
+    list-style: none;
+
+    a {
+      color: var(--gray-color);
+      text-decoration: none;
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: 500;
+
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        color: var(--secondary-color);
+      }
+    }
+    @media screen and (min-width: 901px) {
+      display: none;
+    }
+  }
+
+  .shopIcon {
+    margin-left: 1em;
+    padding: 2px;
+    position: relative;
+    cursor: pointer;
+
+    span {
+      position: absolute;
+      right: 8px;
+      top: 2px;
+      padding: 2px 6px;
+      background: var(--secondary-color);
+      border-radius: 50%;
+      font-size: 14px;
+      font-weight: 600;
+      color: #f4f4f4;
+    }
+
+    svg {
+      height: 26px;
+      width: 26px;
+      color: var(--secondary-color);
+    }
+  }
+
+  @media screen and (min-width: 901px) {
+    display: none;
+  }
+}

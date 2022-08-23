@@ -1,0 +1,14 @@
+export { default as HomeView } from "./HomeView";
+export { default as LoginView } from "./Login";
+export { default as FAQsView } from "./FAQsView";
+export { default as SignUpView } from "./SignUpView";
+export { default as DashboardView } from "./DashboardView/DashboardView";
+export { default as ProductView } from "./ProductView/ProductView";
+export { default as CustomersView } from "./Customers/CustomersView";
+export { default as AddProductPage } from "./AddProductPage/AddProductPage";
+export { default as StaffView } from "./StaffView/StaffView";
+export { default as ReportView } from "./ReportView/ReportView";
+export { default as PayView } from "./PayView/PayView";
+export { default as DeviceView } from "./DeviceView/DeviceView";
+export { default as Support } from "./Support/Support";
+export { default as ProductList } from "./ProductList/ProductList";

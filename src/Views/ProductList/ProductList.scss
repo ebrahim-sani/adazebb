@@ -1,0 +1,72 @@
+.app__products-component {
+  background-color: whitesmoke;
+  padding: 8rem 8rem 4em;
+
+  @media screen and (max-width: 600px) {
+    padding: 8rem 1rem 4rem;
+  }
+
+  .app__product-list {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 2em;
+    column-gap: 1em;
+    justify-content: center;
+
+    .app__product-card {
+      padding: 20px;
+      background: #fff;
+      width: fit-content;
+      border-radius: 12px;
+      box-shadow: 0 0 1rem rgba(26, 26, 44, 0.05);
+
+      .app__product-desc {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        span {
+          padding: 4px;
+          background: wheat;
+          width: fit-content;
+          border-radius: 8px;
+          color: rgb(143, 129, 129);
+          align-self: center;
+        }
+
+        h4 {
+          color: rgb(70, 69, 69);
+        }
+
+        .app__card-footer {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .app__card-price {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+          }
+          .bag_icon {
+            margin-left: 1em;
+            padding: 10px;
+            position: relative;
+            cursor: pointer;
+
+            svg {
+              height: 26px;
+              width: 26px;
+              color: var(--secondary-color);
+            }
+          }
+        }
+      }
+
+      img {
+        width: 16em;
+        border-radius: 12px;
+      }
+    }
+  }
+}

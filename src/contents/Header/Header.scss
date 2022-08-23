@@ -1,0 +1,102 @@
+.app__header-components {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4rem;
+
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+  }
+  @media screen and (max-width: 760px) {
+    margin-top: 8rem;
+  }
+}
+
+.app__header-left {
+  padding: 0 2.5rem 0 1rem;
+  position: relative;
+
+  h2 {
+    font-size: 3.8rem;
+    margin-bottom: 4rem;
+
+    span {
+      color: var(--secondary-color);
+    }
+
+    @media screen and (max-width: 900px) {
+      padding: 0;
+    }
+    @media screen and (max-width: 500px) {
+      font-size: 2.6rem;
+      margin-bottom: 2rem;
+    }
+    @media screen and (max-width: 400px) {
+      font-size: 2.8rem;
+      margin: 1rem 0;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    padding: 0 0 1rem;
+  }
+}
+
+.app__header-btns {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+
+  button {
+    padding: 6px 16px;
+    display: flex;
+    align-items: center;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    margin-bottom: 3rem;
+  }
+
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.app__btn-first {
+  margin-right: 20px;
+  background: var(--secondary-color);
+  color: var(--white-color);
+
+  svg {
+    margin-left: 0.9rem;
+  }
+
+  @media screen and (max-width: 400px) {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+.app__header-right {
+  @media screen and (max-width: 500px) {
+    img {
+      height: 24rem;
+      margin-top: 2rem;
+    }
+  }
+}

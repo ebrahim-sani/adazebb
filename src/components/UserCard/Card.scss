@@ -1,0 +1,90 @@
+.userCard {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 999;
+
+  .personIcon {
+    padding: 0.1em;
+    border: 1px solid gray;
+    border-radius: 50%;
+    background: white;
+    margin: 10px 20px 0 0;
+    cursor: pointer;
+
+    svg {
+      width: 2em;
+      height: 2em;
+    }
+
+    @media screen and (max-width: 768px) {
+      margin: 20px 40px 0 0;
+    }
+  }
+
+  .userCard__component {
+    display: flex;
+    background: #fff;
+    padding: 1.3rem;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 0 1rem rgba(26, 26, 44, 0.05);
+
+    @media screen and (max-width: 768px) {
+      padding: 0.8em;
+    }
+    .userCardFirst {
+      display: flex;
+      div {
+        display: flex;
+        align-items: center;
+        margin: 0 0.8em;
+
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+
+        p {
+          font-size: small;
+          font-weight: 600;
+          margin-left: 4px;
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  .userCardSecond {
+    display: flex;
+    align-items: center;
+    margin: 0 0.8em;
+
+    p {
+      font-size: small;
+      font-weight: 600;
+      color: gray;
+      margin-top: 0;
+    }
+
+    div {
+      display: flex;
+      align-items: flex-end;
+      flex-direction: column;
+    }
+
+    span {
+      padding: 0.1em;
+      border: 1px solid gray;
+      border-radius: 50%;
+      background: whitesmoke;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    svg {
+      width: 2em;
+      height: 2em;
+    }
+  }
+}

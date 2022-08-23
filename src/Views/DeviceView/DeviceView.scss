@@ -1,0 +1,238 @@
+.app__device-view {
+  display: flex;
+  width: 100vw;
+  background: rgb(245, 244, 244);
+  padding-left: clamp(80px, 10vw, 300px);
+
+  @media screen and (max-width: 760px) {
+    padding-left: 0;
+  }
+}
+
+.app__deviceView-component {
+  padding-left: clamp(80px, 10vw, 100px);
+  width: 100%;
+  max-width: 1440px;
+  margin: 6rem auto;
+  padding-right: 6rem;
+
+  @media screen and (max-width: 760px) {
+    padding-left: 0;
+  }
+  @media screen and (max-width: 500px) {
+    padding: 0 10px;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: rgb(100, 100, 100);
+    margin-top: 0.8rem;
+  }
+
+  .app__inner-comp {
+    // display: flex;
+
+    .app__inner-links {
+      margin-top: 2rem;
+
+      .app__btns {
+        display: flex;
+        border-bottom: 1px solid rgb(180, 178, 178);
+
+        div {
+          // margin: 0.1rem 0;
+          padding: 0.1rem 0;
+          margin-right: 20px;
+          cursor: pointer;
+
+          span {
+            font-size: 0.9rem;
+          }
+        }
+        .active {
+          border-bottom: 2px solid var(--secondary-color);
+        }
+      }
+    }
+    .device__component {
+      margin-top: 2rem;
+      width: 100%;
+      background-color: white;
+      height: 26rem;
+      border-radius: 10px;
+      overflow-y: scroll;
+      position: relative;
+
+      @media screen and (max-width: 760px) {
+        padding-left: 0;
+        overflow-x: scroll;
+      }
+      @media screen and (max-width: 500px) {
+        padding: 0 10px;
+      }
+
+      .device__items {
+        padding: 2rem;
+
+        @media screen and (max-width: 500px) {
+          padding: 10px;
+        }
+
+        .head__btns {
+          display: flex;
+          justify-content: space-between;
+
+          button {
+            padding: 8px 24px;
+            background: rgb(245, 244, 244);
+            color: rgb(97, 96, 96);
+            font-weight: 500;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+
+            span {
+              margin-left: 8px;
+
+              svg {
+                height: 20px;
+                width: 20px;
+                color: var(--secondary-color);
+              }
+            }
+          }
+
+          .addProduct {
+            padding: 8px 24px;
+            background: var(--secondary-color);
+            color: var(--white-color);
+            font-weight: 500;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            margin-left: 10px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+.device__listings {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+
+    @media screen and (max-width: 500px) {
+      width: 200%;
+    }
+
+    th {
+      // background-color: #f5f5f5;
+      text-align: left;
+      padding: 8px;
+      color: gray;
+      font-size: 0.9rem;
+    }
+    td {
+      font-size: 0.9rem;
+      border-bottom: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+      color: gray;
+    }
+
+    tr {
+      .prd_active {
+        color: green;
+        font-weight: 600;
+      }
+      .prod_update {
+        display: flex;
+        align-items: center;
+        padding: 5px 18px;
+        border: 1px solid var(--secondary-color);
+        font-size: 0.8rem;
+        border-radius: 6px;
+        color: var(--secondary-color);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.app__filterings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  background: #fff;
+
+  .mid__items {
+    display: flex;
+    align-items: center;
+
+    svg {
+      color: var(--secondary-color);
+      cursor: pointer;
+      padding: 2px;
+    }
+
+    p {
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      margin: 5px;
+      color: gray;
+      border: 1px solid var(--secondary-color);
+      cursor: pointer;
+    }
+    .p-acive {
+      background-color: var(--secondary-color);
+      color: #dddddd;
+    }
+  }
+  .left__items,
+  .right__items {
+    p {
+      color: gray;
+
+      span {
+        color: var(--secondary-color);
+      }
+    }
+  }
+}
+
+.app__downlaod {
+  padding: 20px 10px 20px;
+  background-color: #fff;
+
+  button {
+    padding: 8px 10px;
+    color: rgb(63, 63, 63);
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 8px;
+    background: #f1f1f1;
+    cursor: pointer;
+
+    svg {
+      color: var(--secondary-color);
+      height: 14px;
+      width: 14px;
+      margin-right: 6px;
+    }
+  }
+}
+
+.dot_vertical {
+  cursor: pointer;
+}

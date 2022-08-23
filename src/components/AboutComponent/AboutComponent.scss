@@ -1,0 +1,141 @@
+.app__about-tagline {
+  p {
+    text-align: center;
+    font-size: 1.1rem;
+
+    @media screen and (max-width: 400px) {
+      font-size: 1.02rem;
+    }
+  }
+}
+
+.app__about-components {
+  display: flex;
+  margin-top: 4rem;
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+  }
+  @media screen and (max-width: 760px) {
+    padding: 20px;
+  }
+  @media screen and (max-width: 400px) {
+    margin-top: 2rem;
+  }
+}
+
+.app__about-left {
+  img {
+    height: 38rem;
+
+    @media screen and (max-width: 760px) {
+      height: 20rem;
+    }
+  }
+}
+
+.app__about-item {
+  display: flex;
+  margin-right: 1rem;
+
+  span {
+    background: #f0d7d9;
+    border-radius: 40%;
+    padding: 6px;
+    height: 2.8em;
+
+    @media screen and (max-width: 400px) {
+      padding: 3px;
+      height: 2.4em;
+    }
+  }
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+    color: var(--secondary-color);
+  }
+}
+
+.app__about-secItem {
+  display: flex;
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+    color: rgb(107, 107, 207);
+
+    @media screen and (max-width: 400px) {
+      padding: 2px;
+      height: 2.2rem;
+    }
+  }
+
+  span {
+    background: #e2e5f7;
+    border-radius: 40%;
+    padding: 6px;
+    height: 2.8em;
+
+    @media screen and (max-width: 400px) {
+      padding: 4px;
+      height: 2.6rem;
+    }
+  }
+}
+.app__aboutItem-component {
+  margin: 0 0 2rem 1rem;
+
+  h1 {
+    @media screen and (max-width: 400px) {
+      font-size: 1.2rem;
+    }
+  }
+
+  p {
+    padding: 10px 10px 0 0;
+
+    @media screen and (max-width: 400px) {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.app__about-botton {
+  padding: 9px 8px;
+  width: 8rem;
+  border-radius: 6px;
+  background-color: #fffefe;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  color: #ed6a6a;
+
+  &:hover {
+    color: var(--secondary-color);
+  }
+
+  div {
+    margin-top: 8px;
+    width: 12px;
+    padding: 1.5px;
+    width: 100%;
+    background-color: #ed6a6a;
+
+    &:hover {
+      background-color: var(--secondary-color);
+    }
+  }
+}
+.app__aboutComRight-left {
+  img {
+    height: 30rem;
+
+    @media screen and (max-width: 760px) {
+      height: 20rem;
+    }
+
+    @media screen and (max-width: 400px) {
+      height: 16rem;
+    }
+  }
+}

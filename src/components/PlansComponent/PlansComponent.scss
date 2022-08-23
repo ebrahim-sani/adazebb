@@ -1,0 +1,84 @@
+.app__plansComponent {
+  padding: 1.5rem;
+  margin: 2rem 2.2rem;
+  border-radius: 16px;
+  height: 95vh;
+
+  @media screen and (max-width: 900px) {
+    margin: 2rem 0.6rem;
+  }
+  @media screen and (max-width: 760px) {
+    margin: 1.6rem 8rem;
+  }
+  @media screen and (max-width: 550px) {
+    margin: 1.6rem 2rem;
+  }
+  @media screen and (max-width: 400px) {
+    margin: 1.6rem 1rem;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+  }
+  .app__planCom-desc {
+    display: flex;
+    padding: 16px 0 16px 0;
+    text-align: left;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    color: var(--lightGray-color);
+  }
+
+  button {
+    margin-top: 1rem;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.8s;
+    width: 100%;
+  }
+}
+
+.app__plansComp-price {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  h3 {
+    font-weight: 800;
+    margin-right: 8px;
+  }
+
+  span {
+    font-size: small;
+    color: var(--lightGray-color);
+    padding-top: 10px;
+  }
+}
+
+.app__planCom-features {
+  margin-top: 2rem;
+
+  div {
+    display: flex;
+    align-items: center;
+
+    p {
+      display: flex;
+      align-items: center;
+      margin: 0.8rem 0;
+      font-size: 0.85rem;
+      color: var(--lightGray-color);
+    }
+
+    svg {
+      padding: 2px;
+      width: 1.4em;
+      height: 1.4em;
+      background-color: #f2dfe0;
+      color: var(--secondary-color);
+      border-radius: 50%;
+      margin-right: 1rem;
+    }
+  }
+}

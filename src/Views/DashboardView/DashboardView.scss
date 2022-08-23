@@ -1,0 +1,288 @@
+.app__dashboard {
+  display: flex;
+  width: 100vw;
+  background: rgb(245, 244, 244);
+  padding-left: clamp(80px, 18vw, 300px);
+}
+
+.app__dashboard-component {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex: 1;
+  padding-bottom: 2em;
+}
+.app__dashboardItems {
+  display: flex;
+  flex-direction: column;
+
+  .app__firstComponent,
+  .app__secondComponent,
+  .app__thirdComponent {
+    h3 {
+      font-size: 1rem;
+    }
+    margin-top: 2rem;
+  }
+
+  .app__firstComponent {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(233, 233, 233);
+    border-radius: 10px;
+    width: 80%;
+    height: 160%;
+    padding: 10px;
+    z-index: 1;
+
+    .app__dashboard-value {
+      display: flex;
+      margin-top: 20px;
+      position: relative;
+      height: 10rem;
+      align-items: center;
+
+      .app__dashboard-valueDetails {
+        margin-left: 10rem;
+
+        .app__value-item {
+          padding: 0.3rem;
+        }
+      }
+    }
+  }
+
+  p {
+    color: gray;
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    span {
+      font-size: 1rem;
+      color: var(--secondary-color);
+      border-bottom: 0.9px solid var(--secondary-color);
+    }
+  }
+
+  @media screen and (max-width: 760px) {
+    flex-direction: column;
+  }
+}
+
+.app__dashboard-right {
+  flex: 0.45;
+  display: flex;
+  flex-direction: column;
+}
+
+.value__item {
+  display: flex;
+
+  .rectangle-shape-one {
+    padding: 5px 10px;
+    background-color: var(--secondary-color);
+  }
+  .rectangle-shape-two {
+    padding: 5px 10px;
+    background-color: rgb(160, 12, 12);
+  }
+  .rectangle-shape-three {
+    padding: 5px 10px;
+    background-color: gray;
+  }
+
+  p {
+    margin-left: 10px;
+    font-size: 0.7rem;
+  }
+}
+
+.app__secondComponent {
+  background-color: white;
+  width: 80%;
+  border-radius: 10px;
+  padding: 10px;
+
+  .app__dashboard-cashier {
+    .cashier__tag {
+      display: flex;
+      align-items: center;
+    }
+
+    .cashier__comp {
+      display: flex;
+      flex-direction: row;
+      margin: 2rem 0;
+
+      .app__cashier-One {
+        display: flex;
+        flex: 0.4;
+        flex-direction: column;
+        align-items: center;
+
+        .cashier__icon {
+          height: 40px;
+          width: 40px;
+        }
+      }
+      .app__cashier-two {
+        display: flex;
+        flex: 0.6;
+        flex-direction: column;
+
+        p {
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
+}
+
+.app__dashboard-left {
+  flex: 0.55;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(233, 233, 233);
+  margin-top: 3.4rem;
+  margin-right: 4rem;
+  height: 58%;
+  border-radius: 10px;
+
+  .app__left-items {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+
+    h3 {
+      font-size: 1rem;
+    }
+
+    .app__dashoardCard {
+      margin-top: 10px;
+      margin-right: 10px;
+      background-color: var(--secondary-color);
+      width: 40%;
+      padding: 8px;
+      border-radius: 10px;
+      color: whitesmoke;
+      font-weight: 600;
+
+      div {
+        padding: 13px;
+        width: 80%;
+
+        p,
+        strong {
+          padding: 5px;
+        }
+      }
+    }
+  }
+}
+
+.app__dashboard-cardItems {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+
+  .app__dashoard-card {
+    margin-right: 10px;
+    background-color: var(--secondary-color);
+    width: 40%;
+    padding: 8px;
+    border-radius: 10px;
+    color: whitesmoke;
+    font-weight: 600;
+
+    div {
+      padding: 13px;
+      width: 80%;
+
+      p {
+        padding: 5px;
+      }
+      small {
+        padding: 5px;
+        font-weight: 400;
+      }
+    }
+  }
+}
+.comp-second {
+  h3 {
+    font-size: 1rem;
+  }
+  margin-top: 2rem;
+}
+
+.app__dashboard-topCustomers {
+  margin-top: 1rem;
+  h3 {
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+  div {
+    padding: 50px;
+    background-color: white;
+    border-radius: 16px;
+    margin-top: 10px;
+  }
+}
+
+.app__pichart {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 30px;
+  top: 0;
+
+  @media screen and (max-width: 450px) {
+    right: 30px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .app__dashboard {
+    padding-left: clamp(0, 0, 0);
+  }
+
+  .app__dashboard-component {
+    padding: 0.8rem 2rem;
+  }
+  .app__dashboardItems .app__firstComponent {
+    width: 100%;
+  }
+  .app__dashboardItems {
+    margin-top: 80px;
+
+    .header-aag {
+      text-align: center;
+    }
+  }
+  .app__secondComponent {
+    width: 100%;
+  }
+  .app__dashboard-left {
+    margin-right: 0;
+  }
+  .app__dashboard-left {
+    .app__left-items {
+      .app__dashoardCard {
+        width: 80%;
+      }
+    }
+  }
+
+  .app__dashboard-cardItems {
+    .app__dashoard-card {
+      width: 80%;
+      padding: 0;
+      height: 6rem;
+      margin-bottom: 15px;
+    }
+  }
+  .app__dashboard-cardItems {
+    flex-direction: column;
+  }
+}
