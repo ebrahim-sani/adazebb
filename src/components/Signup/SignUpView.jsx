@@ -3,171 +3,176 @@ import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 import {
-  useCreateAccountMutation,
-  useGetAccountsQuery,
+    useCreateAccountMutation,
+    useGetAccountsQuery,
 } from "../../services/accountApi";
 
 import "./SignUpView.scss";
 
 const SignUp = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [marchant, setMarchant] = useState(false);
-  const [customer, setCustomer] = useState(false);
-  const [staff, setStaff] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [pinVisible, setPinVisible] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [fullName, setFullName] = useState("");
+    const [marchant, setMarchant] = useState(false);
+    const [customer, setCustomer] = useState(false);
+    const [staff, setStaff] = useState(false);
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [pinVisible, setPinVisible] = useState(false);
 
-  /* Make sure to remove -> id <- when working with real API */
-  const [id, setId] = useState("");
+    /* Make sure to remove -> id <- when working with real API */
+    const [id, setId] = useState("");
 
-  const [createAccount, { isSuccess, isError, error }] =
-    useCreateAccountMutation();
+    const [createAccount, { isSuccess, isError, error }] =
+        useCreateAccountMutation();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    let newUserCredential = {
-      id,
-      email,
-      password,
-      fullName,
-      marchant,
-      customer,
-      staff,
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        let newUserCredential = {
+            id,
+            email,
+            password,
+            fullName,
+            marchant,
+            customer,
+            staff,
+        };
+        try {
+            await createAccount(newUserCredential).unwrap();
+        } catch (err) {
+            console.log(error);
+        }
+        isSuccess &&
+            (setEmail(""),
+            setFullName(""),
+            setId(""),
+            setPassword(""),
+            setPhoneNumber(""),
+            setStaff(false),
+            setMarchant(false),
+            setCustomer(false));
     };
-    try {
-      await createAccount(newUserCredential).unwrap();
-    } catch (err) {
-      console.log(error);
-    }
-    isSuccess &&
-      (setEmail(""),
-      setFullName(""),
-      setId(""),
-      setPassword(""),
-      setPhoneNumber(""),
-      setStaff(false),
-      setMarchant(false),
-      setCustomer(false));
-  };
 
-  return (
-    <div className="app__loginView">
-      <div className="app__loginViewComponent">
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <h4>Sign Up</h4>
-          <p>
-            Please provide your registered details to login to your dashboard.
-          </p>
-          <div className="login__form-element">
-            <input
-              className={fullName ? "active" : ""}
-              type="text"
-              value={fullName}
-              // onFocus={() => setErrorUsername(false)}
-              onChange={(e) => setFullName(e.target.value)}
-            />
-            <label htmlFor="fullName">Full Name</label>
-            <p>{!fullName && "This field is required"}</p>
-          </div>
+    return (
+        <div className="app__loginView">
+            <div className="app__loginViewComponent">
+                <form onSubmit={(e) => handleSubmit(e)}>
+                    <h4>Sign Up</h4>
+                    <p>
+                        Please provide your registered details to login to your
+                        dashboard.
+                    </p>
+                    <div className="login__form-element">
+                        <input
+                            className={fullName ? "active" : ""}
+                            type="text"
+                            value={fullName}
+                            // onFocus={() => setErrorUsername(false)}
+                            onChange={(e) => setFullName(e.target.value)}
+                        />
+                        <label htmlFor="fullName">Full Name</label>
+                        <p>{!fullName && "This field is required"}</p>
+                    </div>
 
-          <div className="login__form-element">
-            <input
-              className={email ? "active" : ""}
-              type="text"
-              value={email}
-              // onFocus={() => setErrorUsername(false)}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <label htmlFor="fullName">Email</label>
-            <p>{!email && "This field is required"}</p>
-          </div>
+                    <div className="login__form-element">
+                        <input
+                            className={email ? "active" : ""}
+                            type="text"
+                            value={email}
+                            // onFocus={() => setErrorUsername(false)}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <label htmlFor="fullName">Email</label>
+                        <p>{!email && "This field is required"}</p>
+                    </div>
 
-          <div className="login__form-element">
-            <input
-              className={phoneNumber ? "active" : ""}
-              type="decimal"
-              value={phoneNumber}
-              // onFocus={() => setErrorUsername(false)}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
-            <label htmlFor="fullName">Phone Number</label>
-            <p>{!phoneNumber && "This field is required"}</p>
-          </div>
+                    <div className="login__form-element">
+                        <input
+                            className={phoneNumber ? "active" : ""}
+                            type="decimal"
+                            value={phoneNumber}
+                            // onFocus={() => setErrorUsername(false)}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                        />
+                        <label htmlFor="fullName">Phone Number</label>
+                        <p>{!phoneNumber && "This field is required"}</p>
+                    </div>
 
-          <div className="login__form-element">
-            <input
-              className={password ? "active" : ""}
-              type={pinVisible ? "text" : "password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <label htmlFor="username">Password</label>
-            <p>{!password && "This field is required"}</p>
-            {pinVisible ? (
-              <AiOutlineEye
-                className="form__icon active"
-                onClick={() => setPinVisible((pinVisible) => !pinVisible)}
-              />
-            ) : (
-              <AiOutlineEyeInvisible
-                className="form__icon"
-                onClick={() => setPinVisible((pinVisible) => !pinVisible)}
-              />
-            )}
-          </div>
+                    <div className="login__form-element">
+                        <input
+                            className={password ? "active" : ""}
+                            type={pinVisible ? "text" : "password"}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <label htmlFor="username">Password</label>
+                        <p>{!password && "This field is required"}</p>
+                        {pinVisible ? (
+                            <AiOutlineEye
+                                className="form__icon active"
+                                onClick={() =>
+                                    setPinVisible((pinVisible) => !pinVisible)
+                                }
+                            />
+                        ) : (
+                            <AiOutlineEyeInvisible
+                                className="form__icon"
+                                onClick={() =>
+                                    setPinVisible((pinVisible) => !pinVisible)
+                                }
+                            />
+                        )}
+                    </div>
 
-          <div className="signup__radios">
-            <div>
-              <input
-                type="checkbox"
-                name="marchant"
-                id="mch"
-                value={marchant}
-                onChange={() => setMarchant(true)}
-              />
-              <label htmlFor="marchant">Marchant</label>
+                    <div className="signup__radios">
+                        <div>
+                            <input
+                                type="checkbox"
+                                name="marchant"
+                                id="mch"
+                                value={marchant}
+                                onChange={() => setMarchant(true)}
+                            />
+                            <label htmlFor="marchant">Marchant</label>
+                        </div>
+                        <div>
+                            <input
+                                type="checkbox"
+                                name="customer"
+                                id="mch"
+                                value={customer}
+                                onChange={() => setCustomer(true)}
+                            />
+                            <label htmlFor="customer">Customer</label>
+                        </div>
+
+                        <div>
+                            <input
+                                type="checkbox"
+                                name="staff"
+                                id="mch"
+                                value={staff}
+                                onChange={() => setStaff(true)}
+                            />
+                            <label htmlFor="staff">Staff</label>
+                        </div>
+                    </div>
+
+                    <div className="login__form-element buttons">
+                        <button
+                            disabled={false}
+                            type="submit"
+                            // onClick={() => setLogin(true)}
+                        >
+                            Sign Up
+                        </button>
+                    </div>
+                    <p className="app__signup-link">
+                        Do have account? <span>Login</span>
+                    </p>
+                </form>
             </div>
-            <div>
-              <input
-                type="checkbox"
-                name="customer"
-                id="mch"
-                value={customer}
-                onChange={() => setCustomer(true)}
-              />
-              <label htmlFor="customer">Customer</label>
-            </div>
-
-            <div>
-              <input
-                type="checkbox"
-                name="staff"
-                id="mch"
-                value={staff}
-                onChange={() => setStaff(true)}
-              />
-              <label htmlFor="staff">Staff</label>
-            </div>
-          </div>
-
-          <div className="login__form-element buttons">
-            <button
-              disabled={false}
-              type="submit"
-              // onClick={() => setLogin(true)}
-            >
-              Sign Up
-            </button>
-          </div>
-          <p className="app__signup-link">
-            Do have account? <span>Login</span>
-          </p>
-        </form>
-      </div>
-    </div>
-  );
+        </div>
+    );
 };
 
 export default SignUp;
