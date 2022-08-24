@@ -34,7 +34,8 @@ const AddCustomer = ({ setToggleNewCustomer }) => {
             staff,
         };
         try {
-            await createAccount(newUserCredential).unwrap();
+            const res = await createAccount(newUserCredential).unwrap();
+            console.log(res);
         } catch (err) {
             console.log(error);
         }

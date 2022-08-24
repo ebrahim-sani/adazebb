@@ -1,164 +1,56 @@
 import React from "react";
 import { BiShoppingBag } from "react-icons/bi";
+import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "../../components";
-import { images } from "../../constants";
+import { useGetProductsQuery } from "../../services/productApi";
 import "./ProductList.scss";
 
 const ProductList = () => {
-  return (
-    <div className="prod__list">
-      <Navbar />
+    const { data: fetchedProducts } = useGetProductsQuery();
+    const products = fetchedProducts?.responseObject?.$values;
+    console.log(products);
 
-      <div className="app__products-component">
-        <div className="app__product-list">
-          <div className="app__product-card">
-            <img src={images.demopic} alt="" />
-            <div className="app__product-desc">
-              <span>Lamps</span>
-              <h4>Big blue lego jeep collection</h4>
-              <div className="app__card-footer">
-                <div className="app__card-price">
-                  <p>Price:</p>
-                  <strong>₦200.55</strong>
+    const navigate = useNavigate();
+
+    return (
+        <div className="prod__list">
+            <Navbar />
+
+            <div className="app__products-component">
+                <div className="app__product-list">
+                    {products?.map((product) => (
+                        <div
+                            onClick={() => navigate(`/products/${product.id}`)}
+                            key={product.$id}
+                            className="app__product-card"
+                        >
+                            <img
+                                src={
+                                    product?.imageUrl
+                                        ? product?.imageUrl
+                                        : "https://img.freepik.com/free-vector/book-mockup_1017-6282.jpg"
+                                }
+                                alt={product?.name}
+                            />
+                            <div className="app__product-desc">
+                                <span>{product?.categoryName ?? "INV"}</span>
+                                <h4>{product?.name}</h4>
+                                <div className="app__card-footer">
+                                    <div className="app__card-price">
+                                        <p>Price:</p>
+                                        <strong>₦{product?.price}</strong>
+                                    </div>
+                                    <div className="bag_icon">
+                                        <BiShoppingBag />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-                <div className="bag_icon">
-                  <BiShoppingBag />
-                </div>
-              </div>
             </div>
-          </div>
-          <div className="app__product-card">
-            <img src={images.demopic} alt="" />
-            <div className="app__product-desc">
-              <span>Lamps</span>
-              <h4>Big blue lego jeep collection</h4>
-              <div className="app__card-footer">
-                <div className="app__card-price">
-                  <p>Price:</p>
-                  <strong>₦1200.55</strong>
-                </div>
-                <div className="bag_icon">
-                  <BiShoppingBag />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="app__product-card">
-            <img src={images.demopic} alt="" />
-            <div className="app__product-desc">
-              <span>Lamps</span>
-              <h4>Big blue lego jeep collection</h4>
-              <div className="app__card-footer">
-                <div className="app__card-price">
-                  <p>Price:</p>
-                  <strong>₦200.55</strong>
-                </div>
-                <div className="bag_icon">
-                  <BiShoppingBag />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="app__product-card">
-            <img src={images.demopic} alt="" />
-            <div className="app__product-desc">
-              <span>Lamps</span>
-              <h4>Big blue lego jeep collection</h4>
-              <div className="app__card-footer">
-                <div className="app__card-price">
-                  <p>Price:</p>
-                  <strong>₦200.55</strong>
-                </div>
-                <div className="bag_icon">
-                  <BiShoppingBag />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="app__product-card">
-            <img src={images.demopic} alt="" />
-            <div className="app__product-desc">
-              <span>Lamps</span>
-              <h4>Big blue lego jeep collection</h4>
-              <div className="app__card-footer">
-                <div className="app__card-price">
-                  <p>Price:</p>
-                  <strong>₦200.55</strong>
-                </div>
-                <div className="bag_icon">
-                  <BiShoppingBag />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="app__product-card">
-            <img src={images.demopic} alt="" />
-            <div className="app__product-desc">
-              <span>Lamps</span>
-              <h4>Big blue lego jeep collection</h4>
-              <div className="app__card-footer">
-                <div className="app__card-price">
-                  <p>Price:</p>
-                  <strong>₦200.55</strong>
-                </div>
-                <div className="bag_icon">
-                  <BiShoppingBag />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="app__product-card">
-            <img src={images.demopic} alt="" />
-            <div className="app__product-desc">
-              <span>Lamps</span>
-              <h4>Big blue lego jeep collection</h4>
-              <div className="app__card-footer">
-                <div className="app__card-price">
-                  <p>Price:</p>
-                  <strong>₦200.55</strong>
-                </div>
-                <div className="bag_icon">
-                  <BiShoppingBag />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="app__product-card">
-            <img src={images.demopic} alt="" />
-            <div className="app__product-desc">
-              <span>Lamps</span>
-              <h4>Big blue lego jeep collection</h4>
-              <div className="app__card-footer">
-                <div className="app__card-price">
-                  <p>Price:</p>
-                  <strong>₦200.55</strong>
-                </div>
-                <div className="bag_icon">
-                  <BiShoppingBag />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="app__product-card">
-            <img src={images.demopic} alt="" />
-            <div className="app__product-desc">
-              <span>Lamps</span>
-              <h4>Big blue lego jeep collection</h4>
-              <div className="app__card-footer">
-                <div className="app__card-price">
-                  <p>Price:</p>
-                  <strong>₦200.55</strong>
-                </div>
-                <div className="bag_icon">
-                  <BiShoppingBag />
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default ProductList;
