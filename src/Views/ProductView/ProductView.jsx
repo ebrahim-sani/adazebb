@@ -26,7 +26,6 @@ const ProductView = () => {
     const products = fetchedProducts?.responseObject?.$values;
     const categories = prdCategories?.responseObject?.$values;
     console.log(products);
-    // console.log(categories);
 
     const onChangeShop = () => {
         setManageProduct(false);

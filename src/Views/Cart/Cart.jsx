@@ -1,101 +1,116 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { TiDeleteOutline } from "react-icons/ti";
 import { BiShoppingBag } from "react-icons/bi";
-import { AiOutlineLeft, AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
-import { images } from "../../constants";
+import { AiOutlineLeft } from "react-icons/ai";
 import "./Cart.scss";
+import { useStateValue } from "../../context/StateContext";
+import { getTotalItems, getTotalPrice } from "../../reducer";
+import CartItem from "../../components/CartItem";
+import { usePlaceOrderMutation } from "../../services/productApi";
 
 const Cart = ({ setShowCart }) => {
-  const cartRef = useRef();
+    const cartRef = useRef();
+    const [{ cart }, dispatch] = useStateValue();
+    const products = window.localStorage.getItem("cart");
+    const cartItems = JSON.parse(products);
+    const [placeOrder] = usePlaceOrderMutation();
+    const orderDate = new Date().toJSON();
+    const [soldById, setSoldById] = useState(0);
+    const [customerId, setCustomerId] = useState(0);
+    const [orderNumber, setOrderNumber] = useState("");
+    const [paymentMethod, setPaymentMethod] = useState("Card");
+    const orderItems = JSON.parse(localStorage.getItem("cart"));
+    const currency = "NGN";
+    const totalQuantity = getTotalItems(cart);
+    const totalAmount = parseFloat(getTotalPrice(cart));
 
-  return (
-    <div ref={cartRef} className="cart_page">
-      <div className="cart_page-component">
-        <button
-          type="button"
-          onClick={() => setShowCart(false)}
-          className="cart_page-btn"
-        >
-          <AiOutlineLeft />
-          <span>Your Cart</span>
-          <span>(0 items)</span>
-        </button>
+    console.log(orderItems);
 
-        {/* if cartItem == 0 -> then render the following div  */}
-        {/* <div className="cart_page-empty">
-          <BiShoppingBag size={150} />
-          <h3>Your shopping cart is empty!</h3>
+    const handleCheckOut = async () => {
+        const checkoutDetails = {
+            orderItems,
+            orderNumber,
+            soldById,
+            totalQuantity,
+            totalAmount,
+            paymentMethod,
+            currency,
+            customerId,
+            orderDate,
+        };
+        console.log(checkoutDetails);
+        const res = await placeOrder(checkoutDetails);
+        console.log(res);
+    };
 
-          <Link to="/products">
-            <button type="button" onClick={() => setShowCart(false)}>
-              Continue Shopping
-            </button>
-          </Link>
-        </div> */}
+    return (
+        <div ref={cartRef} className="cart_page">
+            <div className="cart_page-component">
+                <button
+                    type="button"
+                    onClick={() => setShowCart(false)}
+                    className="cart_page-btn"
+                >
+                    <AiOutlineLeft />
+                    <span>Your Cart</span>
+                    <span>({getTotalItems(cart)} items)</span>
+                </button>
 
-        <div className="cart_page-item">
-          {/* if cartItem >= 1 -> render the following div  */}
-          <div className="cartItem-component">
-            <img src={images.demopic} alt="" />
+                {cart.length < 1 && (
+                    <div className="cart_page-empty">
+                        <BiShoppingBag size={150} />
+                        <h3>Your shopping cart is empty!</h3>
 
-            <div className="cartItem-desc">
-              <div className="cartItem_desc-comp">
-                <h5>Big blue lego jeep collection</h5>
-                <h4>₦200.55</h4>
-              </div>
+                        <Link to="/products">
+                            <button
+                                type="button"
+                                onClick={() => setShowCart(false)}
+                            >
+                                Continue Shopping
+                            </button>
+                        </Link>
+                    </div>
+                )}
 
-              <div className="cartItem-qty">
-                <div>
-                  <p className="flex border p-[6px]">
-                    <span
-                    //   onClick={() =>
-                    //     toggleCartItemQuantity(item._id, "dec")
-                    //   }
-                    >
-                      <AiOutlineMinus />
-                    </span>
-                    <span>1</span>
-                    <span
-                    //   onClick={() =>
-                    //     toggleCartItemQuantity(item._id, "inc")
-                    //   }
-                    >
-                      <AiOutlinePlus />
-                    </span>
-                  </p>
+                <div className="cart_page-item">
+                    {cartItems.length >= 1 &&
+                        cartItems.map((item) => <CartItem item={item} />)}
                 </div>
 
-                <button
-                  type="button"
-                  //   onClick={() => onRemove(item)}
-                >
-                  <TiDeleteOutline />
-                </button>
-              </div>
+                {cart.length >= 1 && (
+                    <div className="cart_page-foot">
+                        <div className="cart_page-total">
+                            <h3>Subtotal: </h3>
+                            <h3>₦{getTotalPrice(cart)}</h3>
+                        </div>
+                        <div className="card__payment-options">
+                            <label for="payment">Select Payment Method: </label>
+                            <select
+                                onChange={(e) =>
+                                    setPaymentMethod(e.target.value)
+                                }
+                                name="methods"
+                                id="methods"
+                            >
+                                <option>Card</option>
+                                <option>Check</option>
+                                <option>Cash</option>
+                                <option>Wallet</option>
+                                <option>OnlineCard</option>
+                                <option>OnlineUssd</option>
+                                <option>OnlineAccountTransfer</option>
+                            </select>
+                        </div>
+                        <div className="cart_page-foot-btn">
+                            <button type="button" onClick={handleCheckOut}>
+                                Checkout
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div>
-          </div>
         </div>
-
-        {/* if cartItem is <= 0...don't render component below */}
-        <div className="cart_page-foot">
-          <div className="cart_page-total">
-            <h3>Subtotal: </h3>
-            <h3>₦200.55</h3>
-          </div>
-
-          <div className="cart_page-foot-btn">
-            <button
-              type="button"
-              //   onClick={handleCheckOut}
-            >
-              Checkout
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Cart;

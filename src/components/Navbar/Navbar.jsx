@@ -6,10 +6,17 @@ import { Link } from "react-router-dom";
 import "./Navbar.scss";
 import { BiShoppingBag } from "react-icons/bi";
 import Cart from "../../Views/Cart/Cart";
+import { getTotalItems } from "../../reducer";
+import { useStateValue } from "../../context/StateContext";
+
+// import { useStateContext } from "../../context/StateContext";
 
 const Navbar = () => {
     const [showCart, setShowCart] = useState(false);
     const [toggle, setToggle] = useState(false);
+    const [{ cart }] = useStateValue();
+
+    // const { qty, totalQuantities } = useStateContext();
 
     return (
         <nav className="app__navbar">
@@ -29,7 +36,7 @@ const Navbar = () => {
                     <button>Sign Up</button>
                 </Link>
                 <div className="bag_icon" onClick={() => setShowCart(true)}>
-                    <span>0</span>
+                    <span>{getTotalItems(cart)}</span>
                     <BiShoppingBag />
                 </div>
             </ul>
@@ -38,7 +45,7 @@ const Navbar = () => {
 
             <div className="app__navbar-menu">
                 <div className="shopIcon" onClick={() => setShowCart(true)}>
-                    <span>0</span>
+                    <span>{getTotalItems(cart)}</span>
                     <BiShoppingBag />
                 </div>
 

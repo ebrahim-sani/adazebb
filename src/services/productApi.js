@@ -72,11 +72,6 @@ export const productApi = createApi({
             }),
         }),
 
-        // Remember to remove this endpoint
-        /* getOrders: builder.query({
-    //   query: () => "Orders",
-    // }), */
-
         activateOrDeactivateProduct: builder.query({
             query: () => "ActivateOrDeactivateProduct",
         }),
@@ -99,14 +94,18 @@ export const productApi = createApi({
             query: () => "GetProducts",
         }),
 
-        // also here
         getProduct: builder.query({
             query: (id) => `GetProduct?id=${id}`,
+        }),
+
+        getPaymentTypes: builder.query({
+            query: () => "GetPaymentTypes",
         }),
     }),
 });
 
 export const {
+    useGetPaymentTypesQuery,
     useGetProductQuery,
     useGetCategoriesQuery,
     useGetProductsQuery,
@@ -114,4 +113,5 @@ export const {
     useCreateProductMutation,
     usePlaceOrderMutation,
     useAddStockMutation,
+    useUploadResultMutation,
 } = productApi;

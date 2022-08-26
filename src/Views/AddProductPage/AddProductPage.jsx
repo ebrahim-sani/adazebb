@@ -1,19 +1,19 @@
-import React, { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import axios from "axios";
 import { Sidebar } from "../../components";
-import { useCreateProductMutation } from "../../services/productApi";
+import {
+    useCreateProductMutation,
+    useGetCategoriesQuery,
+} from "../../services/productApi";
 import "./AddProductPage.scss";
-// import "../../components/Signup/SignUpView.scss";
 
 const AddProductPage = () => {
-    const [createProduct, isSuccess, isError, error] =
-        useCreateProductMutation();
+    const [createProduct] = useCreateProductMutation();
 
     const [name, setName] = useState("");
     const [code, setCode] = useState("");
     const [description, setDescription] = useState("");
     const [prdPrice, setPrdPrice] = useState("");
-    const [actionOnLowStock, setActionOnLowStock] = useState("");
     const [categoryName, setCategoryName] = useState("");
     const [minStock, setMinStock] = useState("");
     const [prdCatId, setPrdCatId] = useState("");
@@ -21,30 +21,67 @@ const AddProductPage = () => {
     const [canExpire, setCanExpire] = useState(false);
     const [isActive, setIsActive] = useState(false);
     const [image, setImage] = useState("");
-
     const minimumStock = parseFloat(minStock);
     const price = parseFloat(prdPrice);
     const productCategoryId = parseFloat(prdCatId);
-    const imageUrls = [image];
+    const [url, setUrl] = useState("");
+    const [file, setFile] = useState();
+    const [fileName, setFileName] = useState();
 
-    let prdinfo = {
-        name,
-        code,
-        description,
-        price,
-        stockTrackingEnabled,
-        actionOnLowStock,
-        isActive,
-        categoryName,
-        minimumStock,
-        productCategoryId,
-        canExpire,
-        imageUrls,
+    const { data: fetchedData } = useGetCategoriesQuery();
+    const categories = fetchedData?.responseObject?.$values;
+    console.log(categories);
+
+    const saveFile = (e) => {
+        console.log(e.target.files[0]);
+        setFile(e.target.files[0]);
+        setFileName(e.target.files[0].name);
     };
+
+    const headers = {
+        authorization: `Bearer ${localStorage.getItem("auth")}`,
+    };
+
+    const handleUpload = async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append("formFile", file);
+        formData.append("fileName", fileName);
+        console.log(formData);
+
+        try {
+            await axios
+                .post("https://slemtech.com/inventory/UploadResult", formData, {
+                    headers: headers,
+                })
+                .then((img) => {
+                    setUrl(img);
+                });
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    const imageU = url?.data?.responseObject?.secureUrl;
+    const imageUrls = [imageU];
 
     const addProduct = async (e) => {
         e.preventDefault();
-
+        const prdinfo = {
+            name,
+            code,
+            description,
+            price,
+            stockTrackingEnabled,
+            isActive,
+            categoryName,
+            minimumStock,
+            // actionOnLowStock,
+            productCategoryId,
+            canExpire,
+            imageUrls,
+        };
+        console.log(prdinfo);
         try {
             const res = await createProduct(prdinfo).unwrap();
             console.log(res);
@@ -52,7 +89,6 @@ const AddProductPage = () => {
             console.log(error);
         }
     };
-
     return (
         <div className="add__product">
             <div>
@@ -93,51 +129,6 @@ const AddProductPage = () => {
 
                                     <div className="login__form-element">
                                         <input
-                                            className={
-                                                categoryName ? "active" : ""
-                                            }
-                                            type="text"
-                                            value={categoryName}
-                                            onChange={(e) =>
-                                                setCategoryName(e.target.value)
-                                            }
-                                        />
-                                        <label htmlFor="prd-price">
-                                            Product Category
-                                        </label>
-                                    </div>
-                                    <div className="login__form-element">
-                                        <input
-                                            className={prdCatId ? "active" : ""}
-                                            type="text"
-                                            value={prdCatId}
-                                            onChange={(e) =>
-                                                setPrdCatId(e.target.value)
-                                            }
-                                        />
-                                        <label htmlFor="prd-price">
-                                            Product Category ID
-                                        </label>
-                                    </div>
-                                    <div className="login__form-element">
-                                        <input
-                                            className={
-                                                actionOnLowStock ? "active" : ""
-                                            }
-                                            type="text"
-                                            value={actionOnLowStock}
-                                            onChange={(e) =>
-                                                setActionOnLowStock(
-                                                    e.target.value,
-                                                )
-                                            }
-                                        />
-                                        <label htmlFor="prd-price">
-                                            Action On Low Stock
-                                        </label>
-                                    </div>
-                                    <div className="login__form-element">
-                                        <input
                                             className={price ? "active" : ""}
                                             type="text"
                                             value={prdPrice}
@@ -159,6 +150,41 @@ const AddProductPage = () => {
                                         <label htmlFor="prd-price">
                                             Stock Quantity
                                         </label>
+                                    </div>
+
+                                    <div className="login__form-element-select">
+                                        <select
+                                            onChange={(e) =>
+                                                setCategoryName(e.target.value)
+                                            }
+                                            name="methods"
+                                            id="ca"
+                                        >
+                                            <option>
+                                                Select Category Name:
+                                            </option>
+                                            {categories?.map((category) => (
+                                                <option key={category.id}>
+                                                    {category.name}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+
+                                    <div className="login__form-element-select">
+                                        <select
+                                            onChange={(e) =>
+                                                setPrdCatId(e.target.value)
+                                            }
+                                            name="methods"
+                                            id="ca"
+                                        >
+                                            {categories?.map((category) => (
+                                                <option key={category.name}>
+                                                    {category.id}
+                                                </option>
+                                            ))}
+                                        </select>
                                     </div>
 
                                     <div
@@ -259,13 +285,18 @@ const AddProductPage = () => {
                                     </p>
                                     <div>
                                         <input
+                                            // style={{ display: "none" }}
                                             className="img-upload"
                                             type="file"
-                                            value={image}
-                                            onChange={(e) =>
-                                                setImage(e.target.value)
-                                            }
+                                            onChange={saveFile}
                                         />
+                                        <button
+                                            type="button"
+                                            style={{ padding: "10px 20px" }}
+                                            onClick={handleUpload}
+                                        >
+                                            Choose Product Image
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -283,3 +314,14 @@ const AddProductPage = () => {
 };
 
 export default AddProductPage;
+// {
+//     currency: "NGN"
+//     customerId: 0
+//     orderDate: "2022-08-26T04:33:27.647Z"
+//     orderItems: [{ id: 6, name: 'Amazon Echo', price: 20022, quantity: 1 }]
+//     orderNumber: ""
+//     paymentMethod: "OnlineAccountTransfer"
+//     soldById: 0
+//     totalAmount: 20022
+//     totalQuantity: 1
+// }

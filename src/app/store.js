@@ -4,12 +4,12 @@ import { productApi } from "../services/productApi";
 import userReducer from "./features/userSlice";
 
 export default configureStore({
-  reducer: {
-    [accountApi.reducerPath]: accountApi.reducer,
-    [productApi.reducerPath]: productApi.reducer,
-    user: userReducer,
-  },
+    reducer: {
+        [accountApi.reducerPath]: accountApi.reducer,
+        [productApi.reducerPath]: productApi.reducer,
+        user: userReducer,
+    },
 
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(accountApi.middleware),
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(accountApi.middleware),
 });

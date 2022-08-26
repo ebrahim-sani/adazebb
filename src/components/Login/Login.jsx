@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-// import { navigate, Route, Router } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../services/accountApi";
 import { setLogin } from "../../app/features/userSlice";
 import { useDispatch } from "react-redux";
@@ -14,6 +14,7 @@ const LoginView = () => {
     const [login, { isSuccess, isLoading, isError, error }] =
         useLoginMutation();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,8 +32,6 @@ const LoginView = () => {
                     ...token,
                 }),
             );
-
-            setLoginSuccess(true);
         } catch (err) {
             if (isError) {
                 error;
@@ -42,9 +41,6 @@ const LoginView = () => {
 
     return (
         <div className="app__loginView">
-            {/* <div className="app__login-logo">
-        <img src={images.RexRetail} alt="" />
-      </div> */}
             <div className="app__loginViewComponent">
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <h4>Login</h4>
@@ -94,16 +90,15 @@ const LoginView = () => {
                         <button
                             disabled={false}
                             type="submit"
-                            // onClick={isSuccess && navigate()}
+                            onClick={isSuccess && navigate("/dashboard/client")}
                         >
-                            {loginSuccess ? "Login In..." : "Login"}
+                            {isLoading ? "Login In..." : "Login"}
                         </button>
                     </div>
                     <p className="app__signup-link">
                         Don't have account? <span>Sign Up</span>
                     </p>
                 </form>
-                {/* <div>{viewData}</div> */}
             </div>
         </div>
     );
