@@ -8,7 +8,6 @@ import "./ProductList.scss";
 const ProductList = () => {
     const { data: fetchedProducts } = useGetProductsQuery();
     const products = fetchedProducts?.responseObject?.$values;
-    console.log(products);
 
     const navigate = useNavigate();
 

@@ -5,7 +5,7 @@ import {
     useAddStockMutation,
     useRemoveStockMutation,
 } from "../services/productApi";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";s
 
 const AddStock = ({ setToggleStock }) => {
     const [inProductId, setInProductId] = useState("");

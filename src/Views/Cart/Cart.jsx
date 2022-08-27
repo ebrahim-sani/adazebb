@@ -31,8 +31,6 @@ const Cart = ({ setShowCart }) => {
         return newYel;
     });
 
-    console.log(orderItems);
-
     useEffect(() => {
         dispatch(getTotal());
     }, [cart, dispatch]);

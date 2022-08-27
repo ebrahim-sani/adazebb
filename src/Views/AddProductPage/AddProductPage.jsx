@@ -34,7 +34,6 @@ const AddProductPage = () => {
     // const { data: fetchedCategory } = useGetCategoryQuery(id);
 
     const categories = fetchedData?.responseObject?.$values;
-    console.log(categories);
 
     const saveFile = (e) => {
         console.log(e.target.files[0]);
@@ -94,8 +93,6 @@ const AddProductPage = () => {
         }
     };
 
-    console.log(categoryName);
-    console.log(prdCatId);
     const navigate = useNavigate();
 
     // const handleCaegory = (e) => {

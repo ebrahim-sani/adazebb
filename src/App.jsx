@@ -24,37 +24,24 @@ function App() {
     return (
         <div className="app">
             <Routes location={location} key={location.pathname}>
-                <Route exact path="/products/:id" element={<SingleProduct />} />
-                <Route exact path="/products" element={<ProductList />} />
-                <Route exact path="/client/support" element={<Support />} />
+                <Route path="/products/:id" element={<SingleProduct />} />
+                <Route path="/products" element={<ProductList />} />
+                <Route path="/client/support" element={<Support />} />
                 <Route exact path="/client/devices" element={<DeviceView />} />
-                <Route exact path="/client/pay" element={<PayView />} />
+                <Route path="/client/pay" element={<PayView />} />
                 <Route exact path="/client/report" element={<ReportView />} />
                 <Route exact path="/client/staffs" element={<StaffView />} />
                 <Route
-                    exact
                     path="/client/products/add-product"
                     element={<AddProductPage />}
                 />
-                <Route
-                    exact
-                    path="/client/customers"
-                    element={<CustomersView />}
-                />
-                <Route
-                    exact
-                    path="/client/products"
-                    element={<ProductView />}
-                />
-                <Route
-                    exact
-                    path="/dashboard/client"
-                    element={<DashboardView />}
-                />
-                <Route exact path="/signup" element={<SignUpView />} />
-                <Route exact path="/faqs" element={<FAQsView />} />
-                <Route exact path="/login" element={<LoginView />} />
-                <Route exact path="/" element={<HomeView />} />
+                <Route path="/client/customers" element={<CustomersView />} />
+                <Route path="/client/products" element={<ProductView />} />
+                <Route path="/dashboard/client" element={<DashboardView />} />
+                <Route path="/signup" element={<SignUpView />} />
+                <Route path="/faqs" element={<FAQsView />} />
+                <Route path="/login" element={<LoginView />} />
+                <Route path="/" exact element={<HomeView />} />
             </Routes>
         </div>
     );
