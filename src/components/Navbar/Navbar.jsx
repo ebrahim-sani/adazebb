@@ -51,14 +51,12 @@ const Navbar = () => {
                 {toggle && (
                     <ul>
                         <AiOutlineClose onClick={() => setToggle(false)} />
-                        {["pricing", "products", "faqs", "login"].map(
-                            (item) => (
-                                <li className="" key={`link-${item}`}>
-                                    <div />
-                                    <Link to={`/${item}`}>{item}</Link>
-                                </li>
-                            ),
-                        )}
+                        {["products", "faqs", "login"].map((item) => (
+                            <li className="" key={`link-${item}`}>
+                                <div />
+                                <Link to={`/${item}`}>{item}</Link>
+                            </li>
+                        ))}
                         <div>
                             <Link to="/signup">
                                 <button>Sign Up</button>

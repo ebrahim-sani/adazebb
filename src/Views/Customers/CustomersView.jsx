@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { AiOutlineControl } from "react-icons/ai";
-import { BiChevronDown } from "react-icons/bi";
+// import { BiChevronDown } from "react-icons/bi";
 import { BsChevronRight, BsDownload } from "react-icons/bs";
 import { AddCustomer, Card, Sidebar } from "../../components";
 import "./CustomersView.scss";
 
 const CustomersView = () => {
-    const [active, setActive] = useState(false);
+    // const [active, setActive] = useState(false);
     const [toggleNewCustomer, setToggleNewCustomer] = useState(false);
 
     return (
@@ -127,7 +127,7 @@ const CustomersView = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="app__filterings">
+                    {/* <div className="app__filterings">
                         <div className="left__items">
                             <p>
                                 items per page{" "}
@@ -151,7 +151,7 @@ const CustomersView = () => {
                         <div className="right__items">
                             <p>Showing 1-10 of 12</p>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="app__downlaod">
                         <button>
                             <BsDownload /> Download as CSV

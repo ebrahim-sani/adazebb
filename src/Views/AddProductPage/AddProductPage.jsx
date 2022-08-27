@@ -300,17 +300,20 @@ const AddProductPage = () => {
                                     </p>
                                     <div>
                                         <input
-                                            // style={{ display: "none" }}
                                             className="img-upload"
                                             type="file"
                                             onChange={saveFile}
                                         />
                                         <button
                                             type="button"
-                                            style={{ padding: "10px 20px" }}
+                                            style={{
+                                                padding: "4px 12px",
+                                                marginTop: "10px",
+                                                cursor: "pointer",
+                                            }}
                                             onClick={handleUpload}
                                         >
-                                            Choose Product Image
+                                            Uplaod
                                         </button>
                                     </div>
                                 </div>
