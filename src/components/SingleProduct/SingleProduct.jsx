@@ -22,8 +22,8 @@ const SingleProduct = () => {
     return (
         <div className="single_prod">
             <Navbar />
-            <div className="single_prod-comp">
-                <div key={product?.id}>
+            <div>
+                <div className="single_prod-comp" key={product?.id}>
                     <div className="single_prod-img">
                         <img
                             src={

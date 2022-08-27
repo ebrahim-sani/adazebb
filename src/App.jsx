@@ -1,4 +1,3 @@
-// http://104.217.254.111/inventory/swagger/index.html
 import React from "react";
 import { Route, useLocation, Routes } from "react-router-dom";
 import "./App.scss";

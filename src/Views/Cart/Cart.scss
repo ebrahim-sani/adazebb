@@ -17,6 +17,10 @@
     padding: 40px 10px;
     box-shadow: 0 0 1rem rgba(26, 26, 44, 0.05);
 
+    @media screen and (max-width: 360px) {
+        width: 105vw;
+    }
+
     .cart_page-btn {
         display: flex;
         align-items: center;
@@ -220,12 +224,6 @@
                 font-weight: bold;
             }
         }
-
-        // .cart__payment-options {
-        //     select {
-        //         padding: 8px 10px;
-        //     }
-        // }
 
         .cart_page-foot-btn {
             margin: auto;

@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "../Views/AddProductPage/AddProductPage.scss";
 import { MdCancel } from "react-icons/md";
-import { useAddStockMutation } from "../services/productApi";
+import {
+    useAddStockMutation,
+    useRemoveStockMutation,
+} from "../services/productApi";
+import toast from "react-hot-toast";
 
 const AddStock = ({ setToggleStock }) => {
     const [inProductId, setInProductId] = useState("");
@@ -10,11 +14,22 @@ const AddStock = ({ setToggleStock }) => {
     const productId = parseInt(inProductId);
 
     const [addStock] = useAddStockMutation();
+    const [removeStock] = useRemoveStockMutation();
 
     const addstock = async (e) => {
         e.preventDefault();
         const res = await addStock({ productId, value });
-        console.log(res);
+        console.log(res.data.isSuccessful);
+
+        // if (res.data.isSuccessful === true) {
+        //     toast.message("Stock is updated successfully");
+        // }
+    };
+
+    const removestock = async (e) => {
+        e.preventDefault();
+        const res = await removeStock({ productId, value });
+        console.log(res.data.isSuccessful);
     };
 
     return (
@@ -45,7 +60,14 @@ const AddStock = ({ setToggleStock }) => {
                         <label htmlFor="prd-price">Value</label>
                     </div>
 
-                    <div className="form__element">
+                    <div
+                        style={{
+                            display: "flex",
+                            gap: "10px",
+                            padding: "10px",
+                        }}
+                    >
+                        <button onClick={removestock}>Remove Stock</button>
                         <button onClick={addstock}>Add Stock</button>
                     </div>
                 </form>

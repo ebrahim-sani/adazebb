@@ -7,6 +7,7 @@ import {
     useGetCategoryQuery,
 } from "../../services/productApi";
 import "./AddProductPage.scss";
+import { useNavigate } from "react-router-dom";
 
 const AddProductPage = () => {
     const [createProduct] = useCreateProductMutation();
@@ -95,6 +96,7 @@ const AddProductPage = () => {
 
     console.log(categoryName);
     console.log(prdCatId);
+    const navigate = useNavigate();
 
     // const handleCaegory = (e) => {
     //     setCategoryName(e.target.value);
@@ -315,7 +317,13 @@ const AddProductPage = () => {
                             </div>
 
                             <div className="form__btns">
-                                <span>Cancel</span>
+                                <span
+                                    onClick={() =>
+                                        navigate("/client/products/")
+                                    }
+                                >
+                                    Cancel
+                                </span>
                                 <button type="submit">Create Product</button>
                             </div>
                         </form>

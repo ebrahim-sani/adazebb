@@ -3,8 +3,7 @@ import { AiOutlineControl } from "react-icons/ai";
 import { BiChevronDown } from "react-icons/bi";
 import { BsChevronRight, BsDownload } from "react-icons/bs";
 import { MdCancel } from "react-icons/md";
-import { Link } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AddProductCategory, Card, Shops, Sidebar } from "../../components";
 import AddStock from "../../components/AddStock";
 import {
@@ -23,7 +22,7 @@ const ProductView = () => {
     const [toggleNewCategory, setToggleNewCategory] = useState(false);
     const { data: fetchedProducts } = useGetProductsQuery();
     const { data: prdCategories } = useGetCategoriesQuery();
-
+    const navigate = useNavigate();
     const products = fetchedProducts?.responseObject?.$values;
     const categories = prdCategories?.responseObject?.$values;
     console.log(products);
@@ -89,11 +88,17 @@ const ProductView = () => {
                                                     <AiOutlineControl />
                                                 </span>
                                             </button>
-                                            <Link to="/client/products/add-product">
-                                                <button className="addProduct">
-                                                    New Product
-                                                </button>
-                                            </Link>
+
+                                            <button
+                                                onClick={() =>
+                                                    navigate(
+                                                        "/client/products/add-product",
+                                                    )
+                                                }
+                                                className="addProduct"
+                                            >
+                                                New Product
+                                            </button>
                                         </div>
 
                                         <table>

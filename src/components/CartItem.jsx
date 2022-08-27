@@ -50,10 +50,7 @@ const CartItem = ({ item }) => {
                         </p>
                     </div>
 
-                    <button
-                        type="button"
-                        onClick={() => handleRemove(item.quantity)}
-                    >
+                    <button type="button" onClick={() => handleRemove(item)}>
                         <TiDeleteOutline />
                     </button>
                 </div>
