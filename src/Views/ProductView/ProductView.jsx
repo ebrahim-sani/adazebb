@@ -6,6 +6,7 @@ import { MdCancel } from "react-icons/md";
 import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import { AddProductCategory, Card, Shops, Sidebar } from "../../components";
+import AddStock from "../../components/AddStock";
 import {
     useGetCategoriesQuery,
     useGetProductsQuery,
@@ -17,7 +18,7 @@ const ProductView = () => {
     const [shops, setShops] = useState(false);
     const [productCategories, setProductCategories] = useState(false);
     // const [active, setActive] = useState(false);
-    const [toggleNewProd, setToggleNewProd] = useState(false);
+    const [toggleStock, setToggleStock] = useState(false);
     const [toggleNewShop, setToggleNewShop] = useState(false);
     const [toggleNewCategory, setToggleNewCategory] = useState(false);
     const { data: fetchedProducts } = useGetProductsQuery();
@@ -120,7 +121,14 @@ const ProductView = () => {
                                                         Active
                                                     </td>
                                                     <td>
-                                                        <button className="prod_update">
+                                                        <button
+                                                            onClick={() =>
+                                                                setToggleStock(
+                                                                    true,
+                                                                )
+                                                            }
+                                                            className="prod_update"
+                                                        >
                                                             Update
                                                         </button>
                                                     </td>
@@ -227,6 +235,9 @@ const ProductView = () => {
                             <AddProductCategory
                                 setToggleNewCategory={setToggleNewCategory}
                             />
+                        )}
+                        {toggleStock && (
+                            <AddStock setToggleStock={setToggleStock} />
                         )}
                     </div>
                 </div>

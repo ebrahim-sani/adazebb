@@ -1,48 +1,22 @@
 import React, { useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import { useParams } from "react-router-dom";
-import { images } from "../../constants";
-import { useStateValue } from "../../context/StateContext";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetProductQuery } from "../../services/productApi";
 import Navbar from "../Navbar/Navbar";
 import "./SingleProduct.scss";
+import { addToCart } from "../../app/features/cartSlice";
 
 const SingleProduct = () => {
-    const [qty, setQty] = useState(1);
     const id = useParams();
-    // console.log(id.id);
     const { data: fetchedItem } = useGetProductQuery(id?.id);
     const product = fetchedItem?.responseObject;
-    // console.log(product);
+    const dispatch = useDispatch();
+    const cart = useSelector((state) => state.cart);
+    const navigate = useNavigate();
 
-    const incQty = () => {
-        setQty((prevQty) => prevQty + 1);
-    };
-
-    const decQty = () => {
-        setQty((prevQty) => {
-            if (prevQty - 1 < 1) return 1;
-
-            return prevQty - 1;
-        });
-    };
-    const productDetails = {
-        productId: product?.id,
-        // name: product?.name,
-        unitPrice: product?.price,
-        quantity: qty,
-        orderId: 0,
-    };
-
-    const [{ cart }, dispatch] = useStateValue();
-
-    const addToCart = (item) => {
-        dispatch({
-            type: "ADD_TO_CART",
-            item: {
-                ...productDetails,
-            },
-        });
+    const handleClick = (product) => {
+        dispatch(addToCart(product));
     };
 
     return (
@@ -70,21 +44,19 @@ const SingleProduct = () => {
                         <strong>₦{product?.price}</strong>
 
                         <div className="prod_qty">
-                            <h4>Quantity: </h4>
-                            <p>
-                                <span onClick={decQty}>
-                                    <AiOutlineMinus />
-                                </span>
-                                <span className="qty_count">{qty}</span>
-                                <span onClick={incQty}>
-                                    <AiOutlinePlus />
-                                </span>
-                            </p>
+                            <h4>
+                                Quantity:{" "}
+                                {cart.quantity > 1 ? cart.quantity : 1}
+                            </h4>
                         </div>
 
                         <div className="add_btns">
-                            <button onClick={addToCart}>Add to Cart</button>
-                            <button>Buy NOW</button>
+                            <button onClick={() => navigate("/products")}>
+                                Back
+                            </button>
+                            <button onClick={() => handleClick(product)}>
+                                Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>

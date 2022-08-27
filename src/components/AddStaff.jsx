@@ -16,16 +16,12 @@ const AddStaff = ({ setToggleNewStaff }) => {
     const [phoneNumber, setPhoneNumber] = useState("23344567788");
     const [pinVisible, setPinVisible] = useState(false);
 
-    /* Make sure to remove -> id <- when working with real API */
-    //   const [id, setId] = useState("");
-
     const [createAccount, { isSuccess, isError, error }] =
         useCreateAccountMutation();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         let newUserCredential = {
-            //   id,
             email,
             password,
             fullName,

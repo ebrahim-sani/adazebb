@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../services/accountApi";
-import { setLogin } from "../../app/features/userSlice";
-import { useDispatch } from "react-redux";
+// import { setLogin } from "../../app/features/userSlice";
+// import { useDispatch } from "react-redux";
 import "./Login.scss";
 
 const LoginView = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [pinVisible, setPinVisible] = useState(false);
-    const [loginSuccess, setLoginSuccess] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
     const [login, { isSuccess, isLoading, isError, error }] =
         useLoginMutation();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -22,16 +22,18 @@ const LoginView = () => {
         try {
             const userData = await login({ email, password }).unwrap();
 
-            const user = userData.responseObject;
+            const user = userData?.responseObject;
+            setIsAdmin(user.isAdmin);
+            console.log(user);
+            console.log(isAdmin);
             const token = user.token;
             localStorage.setItem("auth", token);
 
-            dispatch(
-                setLogin({
-                    ...user,
-                    ...token,
-                }),
-            );
+            if (isAdmin === false) {
+                navigate("/products");
+            } else if (isAdmin === true) {
+                navigate("dashboard/client");
+            }
         } catch (err) {
             if (isError) {
                 error;
@@ -87,11 +89,7 @@ const LoginView = () => {
                     </div>
 
                     <div className="login__form-element buttons">
-                        <button
-                            disabled={false}
-                            type="submit"
-                            onClick={isSuccess && navigate("/dashboard/client")}
-                        >
+                        <button disabled={false} type="submit">
                             {isLoading ? "Login In..." : "Login"}
                         </button>
                     </div>

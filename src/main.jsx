@@ -6,19 +6,18 @@ import { Provider } from "react-redux";
 import App from "./App";
 import "./index.css";
 import store from "./app/store";
-import { StateProvider } from "./context/StateContext";
-import reducer, { initialState } from "./reducer";
+import { getTotal } from "./app/features/cartSlice";
+
+store.dispatch(getTotal());
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <Provider store={store}>
-            <StateProvider initialState={initialState} reducer={reducer}>
-                <Router>
-                    <Routes>
-                        <Route path="/*" element={<App />} />
-                    </Routes>
-                </Router>
-            </StateProvider>
+            <Router>
+                <Routes>
+                    <Route path="/*" element={<App />} />
+                </Routes>
+            </Router>
         </Provider>
     </React.StrictMode>,
 );

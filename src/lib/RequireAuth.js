@@ -1,11 +1,8 @@
 import { useLocation, Navigate, Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectCurrentToken } from "../app/features/userSlice";
 
 const RequireAuth = () => {
-    const token = useSelector(selectCurrentToken);
-    console.log(token);
     const location = useLocation();
+    const token = localStorage.getItem("auth");
 
     return token ? (
         <Outlet />

@@ -8,13 +8,14 @@ const baseQuery = fetchBaseQuery({
     // when you change the -> include <- to some other option will work
     credentials: "same-origin",
     prepareHeaders: (headers, { getState }) => {
-        const token = getState().user.accessToken;
+        // const token = getState().user.accessToken;
         const authToken = localStorage.getItem("auth");
 
-        if (token) {
-            headers.set("authorization", `Bearer ${token}`);
-            console.log(token);
-        } else if (!token) {
+        // if (token) {
+        //     headers.set("authorization", `Bearer ${token}`);
+        //     console.log(token);
+        // } else
+        if (authToken) {
             headers.set("authorization", `Bearer ${authToken}`);
             console.log(`found -> ${authToken}`);
         }

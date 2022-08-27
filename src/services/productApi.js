@@ -5,13 +5,8 @@ const baseQuery = fetchBaseQuery({
 
     credentials: "same-origin",
     prepareHeaders: (headers, { getState }) => {
-        const token = getState().user.accessToken;
         const authToken = localStorage.getItem("auth");
-
-        if (token) {
-            headers.set("authorization", `Bearer ${token}`);
-            console.log(token);
-        } else if (!token) {
+        if (authToken) {
             headers.set("authorization", `Bearer ${authToken}`);
             console.log(`found -> ${authToken}`);
         }
@@ -105,6 +100,9 @@ export const productApi = createApi({
 });
 
 export const {
+    useAddStockMutation,
+    useRemoveStockMutation,
+    useGetCategoryQuery,
     useGetPaymentTypesQuery,
     useGetProductQuery,
     useGetCategoriesQuery,
@@ -112,6 +110,5 @@ export const {
     useCreateProductCategoryMutation,
     useCreateProductMutation,
     usePlaceOrderMutation,
-    useAddStockMutation,
     useUploadResultMutation,
 } = productApi;

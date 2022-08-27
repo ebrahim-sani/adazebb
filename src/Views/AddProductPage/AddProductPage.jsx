@@ -4,6 +4,7 @@ import { Sidebar } from "../../components";
 import {
     useCreateProductMutation,
     useGetCategoriesQuery,
+    useGetCategoryQuery,
 } from "../../services/productApi";
 import "./AddProductPage.scss";
 
@@ -29,6 +30,8 @@ const AddProductPage = () => {
     const [fileName, setFileName] = useState();
 
     const { data: fetchedData } = useGetCategoriesQuery();
+    // const { data: fetchedCategory } = useGetCategoryQuery(id);
+
     const categories = fetchedData?.responseObject?.$values;
     console.log(categories);
 
@@ -89,6 +92,14 @@ const AddProductPage = () => {
             console.log(error);
         }
     };
+
+    console.log(categoryName);
+    console.log(prdCatId);
+
+    // const handleCaegory = (e) => {
+    //     setCategoryName(e.target.value);
+    // };
+
     return (
         <div className="add__product">
             <div>
@@ -165,6 +176,8 @@ const AddProductPage = () => {
                                             </option>
                                             {categories?.map((category) => (
                                                 <option key={category.id}>
+                                                    {category.id}
+                                                    {".  "}
                                                     {category.name}
                                                 </option>
                                             ))}
@@ -176,9 +189,9 @@ const AddProductPage = () => {
                                             onChange={(e) =>
                                                 setPrdCatId(e.target.value)
                                             }
-                                            name="methods"
-                                            id="ca"
+                                            id="methods"
                                         >
+                                            <option>Select Category No.</option>
                                             {categories?.map((category) => (
                                                 <option key={category.name}>
                                                     {category.id}
@@ -314,14 +327,3 @@ const AddProductPage = () => {
 };
 
 export default AddProductPage;
-// {
-//     currency: "NGN"
-//     customerId: 0
-//     orderDate: "2022-08-26T04:33:27.647Z"
-//     orderItems: [{ id: 6, name: 'Amazon Echo', price: 20022, quantity: 1 }]
-//     orderNumber: ""
-//     paymentMethod: "OnlineAccountTransfer"
-//     soldById: 0
-//     totalAmount: 20022
-//     totalQuantity: 1
-// }
