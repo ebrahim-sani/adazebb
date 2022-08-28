@@ -52,7 +52,7 @@ function App() {
                 <Route path="/signup" element={<SignUpView />} />
                 <Route path="/faqs" element={<FAQsView />} />
                 <Route path="/login" element={<LoginView />} />
-                <Route path="/" exact={true} element={<HomeView />} />
+                <Route path="/" element={<HomeView />} />
             </Routes>
         </div>
     );
