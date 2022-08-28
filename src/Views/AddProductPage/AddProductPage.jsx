@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Sidebar } from "../../components";
+import { toast } from "react-toastify";
 import {
     useCreateProductMutation,
     useGetCategoriesQuery,
@@ -87,9 +88,17 @@ const AddProductPage = () => {
         console.log(prdinfo);
         try {
             const res = await createProduct(prdinfo).unwrap();
-            console.log(res);
+            console.log(res.message === "Created");
+
+            res.message === "Created" &&
+                toast.info("Product Created Successfully", {
+                    position: "top-left",
+                });
         } catch (error) {
             console.log(error);
+            toast.warn("Something went wrong!", {
+                position: "top-left",
+            });
         }
     };
 

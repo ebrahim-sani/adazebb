@@ -3,11 +3,13 @@ import { AiOutlineControl } from "react-icons/ai";
 // import { BiChevronDown } from "react-icons/bi";
 import { BsChevronRight, BsDownload } from "react-icons/bs";
 import { AddCustomer, Card, Sidebar } from "../../components";
+import { useGetAllCustomersQuery } from "../../services/accountApi";
 import "./CustomersView.scss";
 
 const CustomersView = () => {
     // const [active, setActive] = useState(false);
     const [toggleNewCustomer, setToggleNewCustomer] = useState(false);
+    const { data: fetchedData } = useGetAllCustomersQuery();
 
     return (
         <div className="app__product-view">

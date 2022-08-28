@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "../Views/AddProductPage/AddProductPage.scss";
+import { toast } from "react-toastify";
 import { MdCancel } from "react-icons/md";
 import {
     useAddStockMutation,
     useRemoveStockMutation,
 } from "../services/productApi";
-// import toast from "react-hot-toast";s
 
 const AddStock = ({ setToggleStock }) => {
     const [inProductId, setInProductId] = useState("");
@@ -19,17 +19,21 @@ const AddStock = ({ setToggleStock }) => {
     const addstock = async (e) => {
         e.preventDefault();
         const res = await addStock({ productId, value });
-        console.log(res.data.isSuccessful);
 
-        // if (res.data.isSuccessful === true) {
-        //     toast.message("Stock is updated successfully");
-        // }
+        res.data.isSuccessful === true &&
+            toast.info("Stock Added Successfully", {
+                position: "top-left",
+            });
     };
 
     const removestock = async (e) => {
         e.preventDefault();
         const res = await removeStock({ productId, value });
-        console.log(res.data.isSuccessful);
+
+        res.data.isSuccessful === true &&
+            toast.info("Stock Added Successfully", {
+                position: "top-left",
+            });
     };
 
     return (

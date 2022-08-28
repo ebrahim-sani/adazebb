@@ -2,6 +2,8 @@ import React from "react";
 import { Route, useLocation, Routes } from "react-router-dom";
 import "./App.scss";
 import { SingleProduct } from "./components";
+import { ToastContainer } from "react-toastify";
+
 import {
     AddProductPage,
     CustomersView,
@@ -18,11 +20,14 @@ import {
     StaffView,
     Support,
 } from "./Views";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
     const location = useLocation();
     return (
         <div className="app">
+            <ToastContainer />
+
             <Routes location={location} key={location.pathname}>
                 <Route path="/products/:id" element={<SingleProduct />} />
                 <Route path="/products" element={<ProductList />} />
@@ -30,7 +35,7 @@ function App() {
                 <Route path="/dashboard/devices" element={<DeviceView />} />
                 <Route path="/dashboard/pay" element={<PayView />} />
                 <Route path="/dashboard/report" element={<ReportView />} />
-                <Route exact path="/dashboard/staffs" element={<StaffView />} />
+                <Route path="/dashboard/staffs" element={<StaffView />} />
                 <Route
                     path="/client/products/add-product"
                     element={<AddProductPage />}
