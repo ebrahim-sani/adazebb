@@ -7,6 +7,7 @@ import CartItem from "../../components/CartItem";
 import { usePlaceOrderMutation } from "../../services/productApi";
 import { useDispatch, useSelector } from "react-redux";
 import { getTotal } from "../../app/features/cartSlice";
+import { toast } from "react-toastify";
 
 const Cart = ({ setShowCart }) => {
     const cartRef = useRef();
@@ -22,7 +23,7 @@ const Cart = ({ setShowCart }) => {
     const { cartTotalQuantity } = useSelector((state) => state.cart);
     const cartItem = JSON.parse(localStorage.getItem("cart"));
 
-    const orderItems = cartItem.map((item) => {
+    const orderitems = cartItem.map((item) => {
         const unitPrice = item.price;
         const productId = item.id;
         const quantity = item.quantity;
@@ -39,7 +40,7 @@ const Cart = ({ setShowCart }) => {
     const totalQuantity = cartTotalQuantity;
 
     const checkoutDetails = {
-        orderItems,
+        orderitems,
         orderNumber,
         soldById,
         totalQuantity,
@@ -51,9 +52,21 @@ const Cart = ({ setShowCart }) => {
     };
 
     const handleCheckOut = async () => {
-        console.log(checkoutDetails);
-        const res = await placeOrder(checkoutDetails);
-        console.log(res.data.isSuccessful);
+        try {
+            const res = await placeOrder(checkoutDetails).unwrap();
+            console.log(res);
+
+            toast.info("Order Placed Successfully.", {
+                position: "top-left",
+            });
+        } catch (error) {
+            console.log(error);
+            toast.warn("Something went wrong.", {
+                position: "top-left",
+            });
+        }
+
+        // res.data.isSuccessful === true
     };
 
     return (
@@ -119,7 +132,7 @@ const Cart = ({ setShowCart }) => {
                             </div>
                             <div className="cart_page-foot-btn">
                                 <button onClick={handleCheckOut}>
-                                    Checkout
+                                    Place Order
                                 </button>
                             </div>
                         </div>
