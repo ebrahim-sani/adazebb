@@ -16,6 +16,7 @@
     float: right;
     padding: 40px 10px;
     box-shadow: 0 0 1rem rgba(26, 26, 44, 0.05);
+    overflow: scroll;
 
     @media screen and (max-width: 360px) {
         width: 105vw;
@@ -200,6 +201,7 @@
             width: 100%;
             padding: 0 25px;
             gap: 30px;
+            margin-bottom: 1.3em;
         }
 
         .cart_page-total {
