@@ -38,91 +38,108 @@ const CustomersView = () => {
                                 </div>
 
                                 <table>
-                                    <tr>
-                                        <th>Customer Name</th>
-                                        <th>Email Address</th>
-                                        <th>Phone Number</th>
-                                        <th>Status</th>
-                                    </tr>
+                                    <thead>
+                                        <tr>
+                                            <th>Customer Name</th>
+                                            <th>Email Address</th>
+                                            <th>Phone Number</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Agba Man</td>
+                                            <td>abga@user.com</td>
+                                            <td>+234-912-345-6780</td>
+                                            <td className="prd_active">
+                                                Active
+                                            </td>
+                                            <td>
+                                                <button className="prod_update">
+                                                    Update
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Labaran</td>
+                                            <td>laba@user.com</td>
+                                            <td>+234-802-345-6780</td>
+                                            <td className="prd_active">
+                                                Active
+                                            </td>
+                                            <td>
+                                                <button className="prod_update">
+                                                    Update
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Guest</td>
+                                            <td>guest@user.com</td>
+                                            <td>+234-902-345-6780</td>
+                                            <td className="prd_active">
+                                                Active
+                                            </td>
+                                            <td>
+                                                <button className="prod_update">
+                                                    Update
+                                                </button>
+                                            </td>
+                                        </tr>
 
-                                    <tr>
-                                        <td>Agba Man</td>
-                                        <td>abga@user.com</td>
-                                        <td>+234-912-345-6780</td>
-                                        <td className="prd_active">Active</td>
-                                        <td>
-                                            <button className="prod_update">
-                                                Update
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Labaran</td>
-                                        <td>laba@user.com</td>
-                                        <td>+234-802-345-6780</td>
-                                        <td className="prd_active">Active</td>
-                                        <td>
-                                            <button className="prod_update">
-                                                Update
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Guest</td>
-                                        <td>guest@user.com</td>
-                                        <td>+234-902-345-6780</td>
-                                        <td className="prd_active">Active</td>
-                                        <td>
-                                            <button className="prod_update">
-                                                Update
-                                            </button>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Agba Man</td>
-                                        <td>abga@user.com</td>
-                                        <td>+234-912-345-6780</td>
-                                        <td className="prd_active">Active</td>
-                                        <td>
-                                            <button className="prod_update">
-                                                Update
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Agba Man</td>
-                                        <td>abga@user.com</td>
-                                        <td>+234-912-345-6780</td>
-                                        <td className="prd_active">Active</td>
-                                        <td>
-                                            <button className="prod_update">
-                                                Update
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Agba Man</td>
-                                        <td>abga@user.com</td>
-                                        <td>+234-912-345-6780</td>
-                                        <td className="prd_active">Active</td>
-                                        <td>
-                                            <button className="prod_update">
-                                                Update
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Agba Man</td>
-                                        <td>abga@user.com</td>
-                                        <td>+234-912-345-6780</td>
-                                        <td className="prd_active">Active</td>
-                                        <td>
-                                            <button className="prod_update">
-                                                Update
-                                            </button>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>Agba Man</td>
+                                            <td>abga@user.com</td>
+                                            <td>+234-912-345-6780</td>
+                                            <td className="prd_active">
+                                                Active
+                                            </td>
+                                            <td>
+                                                <button className="prod_update">
+                                                    Update
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Agba Man</td>
+                                            <td>abga@user.com</td>
+                                            <td>+234-912-345-6780</td>
+                                            <td className="prd_active">
+                                                Active
+                                            </td>
+                                            <td>
+                                                <button className="prod_update">
+                                                    Update
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Agba Man</td>
+                                            <td>abga@user.com</td>
+                                            <td>+234-912-345-6780</td>
+                                            <td className="prd_active">
+                                                Active
+                                            </td>
+                                            <td>
+                                                <button className="prod_update">
+                                                    Update
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Agba Man</td>
+                                            <td>abga@user.com</td>
+                                            <td>+234-912-345-6780</td>
+                                            <td className="prd_active">
+                                                Active
+                                            </td>
+                                            <td>
+                                                <button className="prod_update">
+                                                    Update
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

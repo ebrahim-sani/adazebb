@@ -26,17 +26,28 @@ function App() {
             <Routes location={location} key={location.pathname}>
                 <Route path="/products/:id" element={<SingleProduct />} />
                 <Route path="/products" element={<ProductList />} />
-                <Route path="/client/support" element={<Support />} />
-                <Route exact path="/client/devices" element={<DeviceView />} />
-                <Route path="/client/pay" element={<PayView />} />
-                <Route exact path="/client/report" element={<ReportView />} />
-                <Route exact path="/client/staffs" element={<StaffView />} />
+                <Route path="/dashboard/support" element={<Support />} />
+                <Route
+                    exact
+                    path="/dashboard/devices"
+                    element={<DeviceView />}
+                />
+                <Route path="/dashboard/pay" element={<PayView />} />
+                <Route
+                    exact
+                    path="/dashboard/report"
+                    element={<ReportView />}
+                />
+                <Route exact path="/dashboard/staffs" element={<StaffView />} />
                 <Route
                     path="/client/products/add-product"
                     element={<AddProductPage />}
                 />
-                <Route path="/client/customers" element={<CustomersView />} />
-                <Route path="/client/products" element={<ProductView />} />
+                <Route
+                    path="/dashboard/customers"
+                    element={<CustomersView />}
+                />
+                <Route path="/dashboard/products" element={<ProductView />} />
                 <Route path="/dashboard/client" element={<DashboardView />} />
                 <Route path="/signup" element={<SignUpView />} />
                 <Route path="/faqs" element={<FAQsView />} />

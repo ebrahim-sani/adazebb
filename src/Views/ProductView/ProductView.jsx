@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineControl } from "react-icons/ai";
-import { BiChevronDown } from "react-icons/bi";
-import { BsChevronRight, BsDownload } from "react-icons/bs";
+// import { BiChevronDown } from "react-icons/bi";
+// import { BsChevronRight, BsDownload } from "react-icons/bs";
 import { MdCancel } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { AddProductCategory, Card, Shops, Sidebar } from "../../components";
@@ -25,7 +25,6 @@ const ProductView = () => {
     const navigate = useNavigate();
     const products = fetchedProducts?.responseObject?.$values;
     const categories = prdCategories?.responseObject?.$values;
-    console.log(products);
 
     const onChangeShop = () => {
         setManageProduct(false);
@@ -102,43 +101,53 @@ const ProductView = () => {
                                         </div>
 
                                         <table>
-                                            <tr>
-                                                <th>Product Name</th>
-                                                <th>Product Code</th>
-                                                <th>Category</th>
-                                                <th>Price</th>
-                                                <th>Created On</th>
-                                                <th>Status</th>
-                                            </tr>
-
-                                            {products?.map((product) => (
-                                                <tr key={product.id}>
-                                                    <td>{product.name}</td>
-                                                    <td>{product.code}</td>
-                                                    <td>
-                                                        {product.categoryName}
-                                                    </td>
-                                                    <td>₦{product.price}</td>
-                                                    <td>
-                                                        {product.dateCreated}
-                                                    </td>
-                                                    <td className="prd_active">
-                                                        Active
-                                                    </td>
-                                                    <td>
-                                                        <button
-                                                            onClick={() =>
-                                                                setToggleStock(
-                                                                    true,
-                                                                )
-                                                            }
-                                                            className="prod_update"
-                                                        >
-                                                            Update
-                                                        </button>
-                                                    </td>
+                                            <thead>
+                                                <tr>
+                                                    <th>Product Name</th>
+                                                    <th>Product Code</th>
+                                                    <th>Category</th>
+                                                    <th>Price</th>
+                                                    <th>Created On</th>
+                                                    <th>Status</th>
                                                 </tr>
-                                            ))}
+                                            </thead>
+
+                                            <tbody>
+                                                {products?.map((product) => (
+                                                    <tr key={product.id}>
+                                                        <td>{product.name}</td>
+                                                        <td>{product.code}</td>
+                                                        <td>
+                                                            {
+                                                                product.categoryName
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            ₦{product.price}
+                                                        </td>
+                                                        <td>
+                                                            {
+                                                                product.dateCreated
+                                                            }
+                                                        </td>
+                                                        <td className="prd_active">
+                                                            Active
+                                                        </td>
+                                                        <td>
+                                                            <button
+                                                                onClick={() =>
+                                                                    setToggleStock(
+                                                                        true,
+                                                                    )
+                                                                }
+                                                                className="prod_update"
+                                                            >
+                                                                Update
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
                                         </table>
                                     </div>
                                 )}
@@ -167,31 +176,39 @@ const ProductView = () => {
                                         </div>
 
                                         <table>
-                                            <tr>
-                                                <th>Category Name</th>
-                                                <th>Create Date</th>
-                                                <th>Updated Date</th>
-                                                <th>Status</th>
-                                            </tr>
-                                            {categories?.map((category) => (
+                                            <thead>
                                                 <tr>
-                                                    <td>{category.name}</td>
-                                                    <td>
-                                                        {category.dateCreated}
-                                                    </td>
-                                                    <td>
-                                                        {category.dateEdited}
-                                                    </td>
-                                                    <td className="prd_active">
-                                                        Active
-                                                    </td>
-                                                    <td>
-                                                        <button className="prod_update">
-                                                            Update
-                                                        </button>
-                                                    </td>
+                                                    <th>Category Name</th>
+                                                    <th>Create Date</th>
+                                                    <th>Updated Date</th>
+                                                    <th>Status</th>
                                                 </tr>
-                                            ))}
+                                            </thead>
+                                            <tbody>
+                                                {categories?.map((category) => (
+                                                    <tr>
+                                                        <td>{category.name}</td>
+                                                        <td>
+                                                            {
+                                                                category.dateCreated
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            {
+                                                                category.dateEdited
+                                                            }
+                                                        </td>
+                                                        <td className="prd_active">
+                                                            Active
+                                                        </td>
+                                                        <td>
+                                                            <button className="prod_update">
+                                                                Update
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
                                         </table>
                                     </div>
                                 )}

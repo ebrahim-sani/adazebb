@@ -9,7 +9,6 @@ export default configureStore({
         [productApi.reducerPath]: productApi.reducer,
         cart: cartReducer,
     },
-
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(accountApi.middleware),
 });

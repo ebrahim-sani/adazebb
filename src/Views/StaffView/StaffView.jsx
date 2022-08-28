@@ -48,40 +48,48 @@ const StaffView = () => {
                                     </div>
 
                                     <table>
-                                        <tr>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Phone Number</th>
-                                            <th>Email Address</th>
-                                            <th>Staff Role</th>
-                                            <th>Status</th>
-                                        </tr>
-                                        {staffs?.map((staff) => (
-                                            <tr key={staff?.id}>
-                                                <td>
-                                                    {staff?.firstName ?? "Null"}
-                                                </td>
-                                                <td>
-                                                    {staff?.lastName ?? "Null"}
-                                                </td>
-                                                <td>
-                                                    {staff?.phoneNumber ??
-                                                        "Null"}
-                                                </td>
-                                                <td>
-                                                    {staff?.email ?? "Null"}
-                                                </td>
-                                                <td>{staff?.role ?? "Null"}</td>
-                                                <td className="prd_active">
-                                                    Active
-                                                </td>
-                                                <td>
-                                                    <button className="prod_update">
-                                                        Update
-                                                    </button>
-                                                </td>
+                                        <thead>
+                                            <tr>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Phone Number</th>
+                                                <th>Email Address</th>
+                                                <th>Staff Role</th>
+                                                <th>Status</th>
                                             </tr>
-                                        ))}
+                                        </thead>
+                                        <tbody>
+                                            {staffs?.map((staff) => (
+                                                <tr key={staff?.id}>
+                                                    <td>
+                                                        {staff?.firstName ??
+                                                            "Null"}
+                                                    </td>
+                                                    <td>
+                                                        {staff?.lastName ??
+                                                            "Null"}
+                                                    </td>
+                                                    <td>
+                                                        {staff?.phoneNumber ??
+                                                            "Null"}
+                                                    </td>
+                                                    <td>
+                                                        {staff?.email ?? "Null"}
+                                                    </td>
+                                                    <td>
+                                                        {staff?.role ?? "Null"}
+                                                    </td>
+                                                    <td className="prd_active">
+                                                        Active
+                                                    </td>
+                                                    <td>
+                                                        <button className="prod_update">
+                                                            Update
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
