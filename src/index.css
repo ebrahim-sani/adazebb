@@ -1,18 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
 :root {
-  --secondary-color: #ed1c25;
-  --black-color: #030303;
-  --lightGray-color: #505050;
-  --gray-color: #252525;
-  --brown-color: #46364a;
-  --white-color: #ffffff;
-  --font-base: "DM Sans", sans-serif;
+    --secondary-color: #ed1c25;
+    --black-color: #030303;
+    --lightGray-color: #505050;
+    --gray-color: #252525;
+    --brown-color: #46364a;
+    --white-color: #ffffff;
+    --font-base: "DM Sans", sans-serif;
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  scroll-behavior: smooth;
-  font-family: "Open Sans", sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    font-family: "Open Sans", sans-serif;
 }
