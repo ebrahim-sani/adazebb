@@ -16,7 +16,7 @@ const Navbar = () => {
     return (
         <nav className="app__navbar">
             <div className="app__navbar-logo">
-                <Link to="/dashboard/client">
+                <Link to="/">
                     <img src={images.RexRetail} alt="logo" />
                 </Link>
             </div>
