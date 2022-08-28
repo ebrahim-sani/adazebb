@@ -7,13 +7,13 @@ import { useCreateAccountMutation } from "../services/accountApi";
 import "./Custome.scss";
 
 const AddStaff = ({ setToggleNewStaff }) => {
-    const [email, setEmail] = useState("ibrahim@mail.com");
-    const [password, setPassword] = useState("1122");
-    const [fullName, setFullName] = useState("Ibrahim Sani");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [fullName, setFullName] = useState("");
     const [marchant, setMarchant] = useState(false);
     const [customer, setCustomer] = useState(false);
     const [staff, setStaff] = useState(true);
-    const [phoneNumber, setPhoneNumber] = useState("23344567788");
+    const [phoneNumber, setPhoneNumber] = useState("");
     const [pinVisible, setPinVisible] = useState(false);
 
     const [createAccount, { isSuccess, isError, error }] =
