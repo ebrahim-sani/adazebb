@@ -27,17 +27,9 @@ function App() {
                 <Route path="/products/:id" element={<SingleProduct />} />
                 <Route path="/products" element={<ProductList />} />
                 <Route path="/dashboard/support" element={<Support />} />
-                <Route
-                    exact
-                    path="/dashboard/devices"
-                    element={<DeviceView />}
-                />
+                <Route path="/dashboard/devices" element={<DeviceView />} />
                 <Route path="/dashboard/pay" element={<PayView />} />
-                <Route
-                    exact
-                    path="/dashboard/report"
-                    element={<ReportView />}
-                />
+                <Route path="/dashboard/report" element={<ReportView />} />
                 <Route exact path="/dashboard/staffs" element={<StaffView />} />
                 <Route
                     path="/client/products/add-product"
