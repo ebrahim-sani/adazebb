@@ -55,6 +55,7 @@ const Cart = ({ setShowCart }) => {
         try {
             const res = await placeOrder(checkoutDetails).unwrap();
             console.log(res);
+            console.log(checkoutDetails);
 
             toast.info("Order Placed Successfully.", {
                 position: "top-left",

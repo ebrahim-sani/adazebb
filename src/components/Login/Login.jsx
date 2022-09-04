@@ -2,15 +2,12 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../services/accountApi";
-// import { setLogin } from "../../app/features/userSlice";
-// import { useDispatch } from "react-redux";
 import "./Login.scss";
 
 const LoginView = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [pinVisible, setPinVisible] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(false);
     const [login, { isSuccess, isLoading, isError, error }] =
         useLoginMutation();
     // const dispatch = useDispatch();
@@ -21,18 +18,17 @@ const LoginView = () => {
 
         try {
             const userData = await login({ email, password }).unwrap();
-
             const user = userData?.responseObject;
-            setIsAdmin(user.isAdmin);
-            console.log(user);
-            console.log(isAdmin);
+            // console.log(user);
             const token = user.token;
             localStorage.setItem("auth", token);
 
-            if (isAdmin === false) {
+            if (userData.responseObject.isAdmin === true) {
+                navigate("/dashboard/client");
+                console.log("is admin");
+            } else if (userData.responseObject.isAdmin === false) {
                 navigate("/products");
-            } else if (isAdmin === true) {
-                navigate("dashboard/client");
+                console.log("is not admin");
             }
         } catch (err) {
             if (isError) {
