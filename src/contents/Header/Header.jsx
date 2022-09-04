@@ -10,7 +10,7 @@ function Header() {
       <div className="app__header-components">
         <div className="app__header-left">
           <h2 className="app__header-title">
-            Manage <span>Business</span> better, with RexRetail.
+            Manage <span>Business</span> better, with Adazeb.
           </h2>
           <p className="p-text app__header-intro">
             A digital solution that helps you simplify your inventory management
